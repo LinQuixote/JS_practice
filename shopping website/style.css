@@ -1,0 +1,57 @@
+.btn-outline-success{
+    color: #dd572b;
+    border-color: #dd572b;
+}
+
+.btn-outline-success:hover{
+    color: wheat;
+    background-color: #dd572b;
+    border-color: #dd572b;
+}
+
+.innertext-sm{
+    color: #19110b;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.innertext-lg{
+    color: #19110b;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+
+
+.card-border{
+    border: none;
+}
+
+a{
+    color:#19110b;
+    font-size: 18px;
+}
+
+a:hover{
+    color:black;
+}
+
+footer{
+    background-color: black;
+    color: white;
+    font-size: 14px;
+}
+
+.first-line {
+    border-bottom: 1px solid #392d23;
+}
+
+.a-bottom{
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.a-bottom:hover{
+    color: white;
+}
