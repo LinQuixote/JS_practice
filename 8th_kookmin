@@ -1,0 +1,73 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import InlineList from './ui/InlineList';
+import Button from './ui/Button';
+import Text from './ui/Text';
+import Input from './ui/Input';
+import Form from './ui/Form';
+import Select, { Option } from './ui/Select';
+import TextArea from './ui/TextArea';
+import Radio from './ui/Radio';
+import CheckBox from './ui/CheckBox.jsx';
+
+
+const CoinForm = ( props ) => {
+  const [state, setState] = useState({});
+  const setResult = (values) => {
+                          setState(values);
+                          console.log(values);
+                          
+  }
+  return (
+    <>
+      <Form onSubmit={values => setResult(values)} initValues={{code:"DOIT", currentPrice_gte:777, currentPrice_lte:999}}>
+        <Form.Consumer>
+          {({ onChange, values }) => (
+            <InlineList spacingBetween={2} verticalAlign="bottom">
+              <Text xlarge bold>
+                파자주문
+              </Text>
+              <Select name="pizza" label="피자 종류" onChange={onChange} value={values['code']}>
+                <Option label="선택해주세요" value="" />
+                <Option label="불고기 피자" value="불고기" />
+                <Option label="포테이토 피자" value="포테이토" />
+                <Option label="페페로니 피자" value="페페로니" />
+                <Option label="콤비네이션 피자" value="콤비네이션" />
+                <Option label="고구마 피자" value="고구마" />
+              </Select>
+              <Input
+                name="quantity"
+                label="개수"
+                onChange={onChange}
+                value={values['quantity']}
+              />
+              <Radio name="피자두께" label="Thick" value="Thick" cur={state.피자두께} onChange={onChange} />
+              <Radio name="피자두께" label="Medium" value="Medium" cur={state.피자두께} onChange={onChange} />
+              <Radio name="피자두께" label="Thin" value="Thin" cur={state.피자두께} onChange={onChange} autoFocus />
+
+              <CheckBox name="양파" label="양파" checked={state.양파} onChange={onChange} />
+              <CheckBox name="페페로니" label="페페로니" checked={state.페페로니} onChange={onChange} />
+              <CheckBox name="미트볼" label="미트볼" checked={state.미트볼} onChange={onChange} />
+
+              <Input
+                name="drink"
+                label="음료수"
+                onChange={onChange}
+                value={values['drink']}
+              />
+
+              <Button type="submit" primary>
+                검색
+              </Button>
+            </InlineList>
+          )}
+        </Form.Consumer>
+      </Form>
+      <TextArea name={'결과'} value={JSON.stringify(state, null, 2)}/>
+    </>
+  );
+}
+
+CoinForm.propTypes = { setFilter: PropTypes.func };
+
+export default CoinForm;
